@@ -322,8 +322,8 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
 |---|---|
 | `rf_imbalance_comparison.csv` | Performance metrics (Accuracy, Precision, Recall, F1, MCC, Kappa, AUROC, Balanced Accuracy) for each imbalance-handling strategy |
 | `rf_imbalance_ranking.csv` | SHAP-based predictor ranking under each strategy |
-| `comparison_df.csv` | Consolidated model-comparison data frame underlying Figure S8 |
-| `ranking_df.csv` | Consolidated ranking data frame underlying Figure S9/S11 |
+| `comparison_df.csv` | Consolidated model-comparison data frame underlying Supplementary Figure S8 |
+| `ranking_df.csv` | Consolidated ranking data frame underlying Supplementary Figures S9 and S11 |
 | `Supplementary_Table1_RF_Comparison.csv` | Machine-readable version of Supplementary Table S5 |
 | `Supplementary Table S5.docx` | Full formatted results table for manuscript inclusion |
 
