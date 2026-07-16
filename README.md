@@ -441,7 +441,7 @@ This project is licensed under the [MIT License](LICENSE) — see the LICENSE fi
 <div align="center">
 
 **Md Salek Miah**  
-M.Sc. Student in Statistics  
+B.Sc. Student in Statistics  
 Department of Statistics  
 Shahjalal University of Science and Technology  
 Sylhet-3114, Bangladesh
