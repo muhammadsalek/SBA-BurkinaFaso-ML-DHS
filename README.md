@@ -1,3 +1,7 @@
+I understand. Let me fix the image references and make the README completely accurate based on your actual file structure. Here is the corrected version:
+
+---
+
 # 🏥 SBA-BurkinaFaso-ML-DHS
 
 <div align="center">
@@ -284,7 +288,7 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
 3. **RF + class weighting** — inverse class-frequency weights applied during training, avoiding synthetic sample generation
 4. **RF + Boruta-refined feature set** — re-confirmed predictor set with balanced-accuracy as the optimization target rather than overall accuracy
 
-### Results: RF Performance Across Imbalance-Handling Strategies
+### Supplementary Figure S8: RF Performance Across Imbalance-Handling Strategies
 
 <p align="center">
   <img src="Supplementary%20Figure%20S8.tiff" alt="RF performance across imbalance-handling strategies" width="620">
@@ -292,7 +296,7 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
   <sub><b>Supplementary Figure S8.</b> Random Forest performance across alternative class-imbalance-handling strategies. SMOTE demonstrates superior balanced performance across multiple metrics, particularly in recall and balanced accuracy.</sub>
 </p>
 
-### Results: Boruta-Refined Predictor Importance
+### Supplementary Figure S9: Boruta-Refined Predictor Importance
 
 <p align="center">
   <img src="Supplementary%20Figure%20S9.tiff" alt="Boruta-refined predictor importance sensitivity" width="620">
@@ -300,7 +304,7 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
   <sub><b>Supplementary Figure S9.</b> Predictor importance under the Boruta-refined feature set, confirming the stability of the top predictors identified in the main analysis.</sub>
 </p>
 
-### Results: Balanced-Accuracy Comparison
+### Supplementary Figure S10: Balanced-Accuracy Comparison
 
 <p align="center">
   <img src="Supplementary%20Figure%20S10.tiff" alt="Balanced accuracy comparison across strategies" width="620">
@@ -308,7 +312,7 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
   <sub><b>Supplementary Figure S10.</b> Balanced-accuracy comparison across imbalance-handling strategies. SMOTE consistently yields the highest balanced accuracy, indicating superior performance in identifying both skilled and unskilled birth attendance cases. See also Supplementary Figure S10(alternatives).tiff for an alternative visualization.</sub>
 </p>
 
-### Results: Predictor Ranking Stability
+### Supplementary Figure S11: Predictor Ranking Stability
 
 <p align="center">
   <img src="Supplementary%20Figure%20S11.tiff" alt="Predictor ranking stability under alternative imbalance handling" width="620">
