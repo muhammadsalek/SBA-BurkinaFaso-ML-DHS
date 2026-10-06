@@ -1,7 +1,3 @@
-I understand. Let me fix the image references and make the README completely accurate based on your actual file structure. Here is the corrected version:
-
----
-
 # 🏥 SBA-BurkinaFaso-ML-DHS
 
 <div align="center">
@@ -40,6 +36,7 @@ I understand. Let me fix the image references and make the README completely acc
 - [Sensitivity Analysis: Imbalance-Handling Strategies](#-sensitivity-analysis-imbalance-handling-strategies)
 - [Installation & Requirements](#-installation--requirements)
 - [Reproducibility Steps](#-reproducibility-steps)
+- [Peer-Review & Revision History](#-peer-review--revision-history)
 - [Ethical Statement](#-ethical-statement)
 - [Citation](#-citation)
 - [License](#-license)
@@ -48,13 +45,13 @@ I understand. Let me fix the image references and make the README completely acc
 
 ## 🌟 Project Overview
 
-This repository contains the complete analytical codebase, supplementary materials, and reproducibility artifacts accompanying the manuscript cited above, currently under peer review. The study implements an **interpretable machine learning (ML) framework** applied to a nationally representative household survey to:
+This repository contains the complete analytical codebase, supplementary materials, and reproducibility artifacts accompanying the manuscript cited above. The study implements an **interpretable machine learning (ML) framework** applied to a nationally representative household survey to:
 
 - 🎯 **Identify and rank key predictors** of Skilled Birth Attendance (SBA) using five supervised ML algorithms
 - 🧠 **Explain model predictions** using SHapley Additive exPlanations (**SHAP**) for global and local interpretability
 - 🗺️ **Map province-level spatial inequalities** in predicted SBA probabilities across Burkina Faso
 - 🏘️ **Quantify urban–rural disparities** to inform context-specific maternal health interventions
-- ⚖️ **Address class imbalance** using SMOTE, with a dedicated **sensitivity analysis** benchmarking alternative imbalance-correction strategies (class weighting, Boruta-refined feature sets, and balanced-accuracy optimization) to test the robustness of the primary findings
+- ⚖️ **Address class imbalance** using SMOTE, with a dedicated **sensitivity analysis** benchmarking alternative strategies (class weighting, Boruta-refined feature sets, and balanced-accuracy optimization) to test the robustness of the primary findings
 - 📐 **Evaluate clinical utility** via Decision Curve Analysis (DCA) across Random Forest, Logistic Regression, and Support Vector Machine models
 
 > ⚠️ **Conceptual note.** This study adopts a **predictive modeling framework**, not a causal-inference framework. All variables identified as important predictors should be interpreted as statistically associated with the outcome, not as causal determinants of skilled birth attendance.
@@ -72,7 +69,7 @@ This repository contains the complete analytical codebase, supplementary materia
 | **Outcome variable** | Skilled Birth Attendance (SBA) — binary: skilled vs. unskilled |
 | **Data access** | [dhsprogram.com](https://dhsprogram.com) *(registration required)* |
 
-> ⚠️ Raw DHS microdata are **not redistributed** in this repository, in compliance with the DHS Program's data use agreement. Access must be requested directly from the [DHS Program](https://dhsprogram.com/data/dataset_admin/login_main.cfm).
+> ⚠️ Raw DHS microdata are **not redistributed** in this repository, in compliance with the DHS Program's data use agreement. Access must be requested directly from the [DHS Program](https://dhsprogram.com/data/dataset_admin/login_main.cfm). Only a cleaned file containing derived analytic variables is provided in [`Data_materials/`](Data_materials).
 
 <p align="center">
   <img src="Figure%201.png" alt="Study sample selection flowchart" width="620">
@@ -87,52 +84,61 @@ This repository contains the complete analytical codebase, supplementary materia
 ```
 SBA-BurkinaFaso-ML-DHS/
 │
-├── 📂 Main Scripts
-│   ├── Salek_ML(BF)_SBA.R                      # Full ML pipeline: preprocessing, modelling, SHAP, spatial maps
-│   ├── Salek_ML_without_Some_Model_train.R     # Alternative training script (subset of models)
-│   ├── SBA_ML_Sensitivity_Analysis.R           # Sensitivity analysis: class-weighting, Boruta refinement & balanced-accuracy
-│   ├── Correltaion Heatmaps.R                  # Cramér's V correlation heatmap (Supplementary Figure S7)
-│   ├── Precision _recall curve.R               # Precision–recall curves (Supplementary Figure S5)
-│   ├── Salek_data manegments_SBA.do            # Stata: DHS data cleaning & variable construction
-│   └── Svy_LR(Sensistivity).do                 # Stata: survey-weighted logistic regression (sensitivity analysis)
+├── 📂 Coding_Materials/
+│   ├── 📂 R_Studio/
+│   │   ├── Salek_ML(BF)_SBA.R                    # Main ML pipeline: preprocessing, modelling, SHAP, spatial maps
+│   │   ├── Salek_ML_Code.R                       # Additional ML code
+│   │   ├── Salek_ML_without_Some_Model_train.R   # Alternative training script (subset of models)
+│   │   ├── SBA_ML_Sensitivity_Analysis.R         # Sensitivity analysis: class weighting, Boruta refinement, balanced accuracy
+│   │   ├── Correltaion Heatmaps.R                # Cramér's V correlation heatmap (Supplementary Figure S7)
+│   │   └── Precision _recall curve.R             # Precision–recall curves (Supplementary Figure S5)
+│   │
+│   └── 📂 Stata/
+│       ├── README.md                             # Notes on the Stata scripts
+│       ├── Salek_data manegments_SBA.do          # DHS data cleaning & variable construction
+│       ├── Svy_LR(Sensistivity).do               # Survey-weighted logistic regression (sensitivity analysis)
+│       └── Table.do                              # Table generation
 │
-├── 📂 Data
-│   ├── DataDHS_cleaned_descriptive.dta         # Cleaned DHS dataset (Stata format; derived variables only)
-│   ├── comparison_df.csv                       # Model comparison output (imbalance-handling sensitivity)
-│   ├── ranking_df.csv                          # Predictor ranking output (imbalance-handling sensitivity)
-│   ├── rf_imbalance_comparison.csv             # RF performance across imbalance-handling strategies
-│   ├── rf_imbalance_ranking.csv                # RF predictor ranking across imbalance-handling strategies
-│   └── Supplementary_Table1_RF_Comparison.csv  # Consolidated RF comparison table (machine-readable)
+├── 📂 Data_materials/
+│   ├── README.md                                 # Data documentation
+│   ├── DataDHS_cleaned_descriptive.dta           # Cleaned analytic dataset (derived variables only)
+│   └── division_global_SBA_percentages.xlsx      # Province/division-level SBA percentages
 │
-├── 📂 Figures
-│   ├── Figure 1.png                            # Study sample selection flowchart
-│   ├── Supplementary Figure S1.tiff            # SBA prevalence distribution
-│   ├── Supplementary Figure S2.tiff            # Class distribution before & after SMOTE
-│   ├── Supplementray Figure S3.tiff            # Boruta feature selection results
-│   ├── Suppementary Figure S4.tiff             # Cumulative SHAP contribution plot
-│   ├── Supplementary Figure S5.png             # Precision–recall curves across all models
-│   ├── Supplementary Figure S6.tiff            # Random Forest confusion matrix
-│   ├── Supplementary Figure S7.tiff            # Cramér's V correlation heatmap
-│   ├── Supplementary Figure S8.tiff            # RF performance across imbalance-handling strategies
-│   ├── Supplementary Figure S9.tiff            # Boruta-refined predictor importance (sensitivity)
-│   ├── Supplementary Figure S10.tiff           # Balanced-accuracy comparison across strategies
-│   ├── Supplementary Figure S10(alternatives).tiff  # Alternative visualization of Figure S10
-│   └── Supplementary Figure S11.tiff           # Predictor ranking stability under alternative imbalance handling
+├── 📂 Supplementary_Materials/
+│   ├── 📂 Figures/
+│   │   ├── README.md
+│   │   ├── Supplementary Figure S1.tiff          # SBA prevalence distribution
+│   │   ├── Supplementary Figure S2.tiff          # Class distribution before & after SMOTE
+│   │   ├── Supplementray Figure S3.tiff          # Boruta feature selection results
+│   │   ├── Suppementary Figure S4.tiff           # Cumulative SHAP contribution plot
+│   │   ├── Supplementary Figure S5.png           # Precision–recall curves across all models
+│   │   ├── Supplementary Figure S6.tiff          # Random Forest confusion matrix
+│   │   ├── Supplementary Figure S7.tiff          # Cramér's V correlation heatmap
+│   │   ├── Supplementary Figure S8.tiff          # RF performance across imbalance-handling strategies
+│   │   ├── Supplementary Figure S9.tiff          # Boruta-refined predictor importance
+│   │   ├── Supplementary Figure S10.tiff         # Balanced-accuracy comparison across strategies
+│   │   └── Supplementary Figure S11.tiff         # Predictor-ranking stability across strategies
+│   │
+│   └── 📂 Tables/
+│       ├── SUpplementary Tabl S1.docx            # Background characteristics of analytic sample
+│       ├── Supplementary Table S2.docx           # Hyperparameter tuning grid (all models)
+│       ├── Supplementary Table S3.docx           # Baseline model performance without SMOTE
+│       ├── Supplementary Table S4.docx           # Survey-weighted sensitivity analysis results
+│       └── Table1_SBA_Logistic_Regression.xlsx   # Table 1
 │
-├── 📂 Supplementary Tables
-│   ├── SUpplementary Tabl S1.docx              # Background characteristics of analytic sample
-│   ├── Supplementary Table S2.docx             # Hyperparameter tuning grid (all models)
-│   ├── Supplementary Table S3.docx             # Baseline model performance without SMOTE
-│   ├── Supplementary Table S4.docx             # Survey-weighted sensitivity analysis results
-│   └── Supplementary Table S5.docx             # Imbalance-handling sensitivity analysis (full results)
+├── 📂 Publihsed_Artile/                          # Published-article materials
 │
-├── 📂 Reference
-│   └── Burkina-Faso-DHS-2021(Reports).pdf      # Official BF-DHS 2021 final report
+├── 📂 Revision_01/                               # First-round revision (nested: Revision_02 → Revision_03 → final_versions)
+│   └── 📂 Revision_02/
+│       └── 📂 Revision_03/
+│           └── 📂 final_versions/                # Final response letter & Supplementary Information (DOCX/PDF)
 │
-├── Table1_SBA_Logistic_Regression.xlsx          # Table 1: ML model performance metrics
-├── README.md                                    # Project documentation (this file)
-└── LICENSE                                      # MIT License
+├── Figure 1.png                                  # Study sample selection flowchart
+├── README.md                                     # Project documentation (this file)
+└── LICENSE                                       # MIT License
 ```
+
+> 📝 **Note on Supplementary Table S5** (imbalance-handling sensitivity results): it is stored in `Revision_01/Revision_02/` alongside the second-round revision materials, together with the first versions of Supplementary Figures S8–S11. The consolidated versions are in `Supplementary_Materials/Figures/` and in the final Supplementary Information file.
 
 ---
 
@@ -225,7 +231,7 @@ SBA-BurkinaFaso-ML-DHS/
 │   • RF re-estimated under: baseline (no correction) · SMOTE ·       │
 │     class weighting · Boruta-refined feature set                    │
 │   • Balanced-accuracy optimization & predictor-ranking stability    │
-│   • Robustness check against the primary SMOTE-based specification  │
+│   • Survey-weighted logistic regression (Stata)                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -247,7 +253,7 @@ SBA-BurkinaFaso-ML-DHS/
 
 ### Top Predictors (SHAP — Random Forest)
 
-| Rank | Predictor | Direction | Mean |SHAP|
+| Rank | Predictor | Direction | Mean \|SHAP\| |
 |:---:|---|---|:---:|
 | 1 | **Province** (esp. Sahel) | ↓ Negative SHAP | 0.245 |
 | 2 | **ANC visits ≥ 4** | ↑ Positive SHAP | 0.182 |
@@ -260,11 +266,8 @@ SBA-BurkinaFaso-ML-DHS/
 
 ### Cumulative SHAP Contribution
 
-<p align="center">
-  <img src="Suppementary%20Figure%20S4.tiff" alt="Cumulative SHAP contribution plot" width="620">
-  <br>
-  <sub><b>Supplementary Figure S4.</b> Cumulative SHAP contribution plot showing the proportion of total SHAP importance explained by the top predictors. The top 3 predictors collectively account for approximately 52.5% of the total SHAP contribution, with the top 8 predictors explaining over 89%.</sub>
-</p>
+The top 3 predictors collectively account for approximately 52.5% of the total SHAP contribution, and the top 8 predictors explain over 89%.
+See [**Supplementary Figure S4**](Supplementary_Materials/Figures/Suppementary%20Figure%20S4.tiff) for the cumulative SHAP contribution plot.
 
 ### Spatial Patterns
 
@@ -279,57 +282,25 @@ SBA-BurkinaFaso-ML-DHS/
 
 ## 🧪 Sensitivity Analysis: Imbalance-Handling Strategies
 
-To evaluate whether the primary conclusions are an artifact of the SMOTE specification, `SBA_ML_Sensitivity_Analysis.R` re-estimates the Random Forest model under a set of alternative class-imbalance-handling strategies and re-assesses predictor rankings for stability. This analysis was undertaken in direct response to the well-established methodological concern that synthetic oversampling can distort the decision boundary and inflate apparent predictive performance; benchmarking against non-synthetic alternatives is therefore standard practice for imbalanced clinical/epidemiological prediction tasks.
+To evaluate whether the primary conclusions are an artifact of the SMOTE specification, [`SBA_ML_Sensitivity_Analysis.R`](Coding_Materials/R_Studio/SBA_ML_Sensitivity_Analysis.R) re-estimates the Random Forest model under alternative class-imbalance-handling strategies and re-assesses predictor rankings for stability. Synthetic oversampling can distort the decision boundary and inflate apparent performance, so benchmarking against non-synthetic alternatives is standard practice for imbalanced clinical and epidemiological prediction tasks.
 
 **Strategies compared:**
 
 1. **Baseline RF** — no correction for class imbalance (reference)
 2. **RF + SMOTE** — primary specification reported above
-3. **RF + class weighting** — inverse class-frequency weights applied during training, avoiding synthetic sample generation
-4. **RF + Boruta-refined feature set** — re-confirmed predictor set with balanced-accuracy as the optimization target rather than overall accuracy
+3. **RF + class weighting** — inverse class-frequency weights applied during training, with no synthetic sample generation
+4. **RF + Boruta-refined feature set** — re-confirmed predictor set with balanced accuracy as the optimization target
 
-### Supplementary Figure S8: RF Performance Across Imbalance-Handling Strategies
+### Sensitivity Figures
 
-<p align="center">
-  <img src="Supplementary%20Figure%20S8.tiff" alt="RF performance across imbalance-handling strategies" width="620">
-  <br>
-  <sub><b>Supplementary Figure S8.</b> Random Forest performance across alternative class-imbalance-handling strategies. SMOTE demonstrates superior balanced performance across multiple metrics, particularly in recall and balanced accuracy.</sub>
-</p>
+> 💡 Supplementary figures are stored as `.tiff`, which GitHub does not preview inline. Click a link to download and view the file.
 
-### Supplementary Figure S9: Boruta-Refined Predictor Importance
-
-<p align="center">
-  <img src="Supplementary%20Figure%20S9.tiff" alt="Boruta-refined predictor importance sensitivity" width="620">
-  <br>
-  <sub><b>Supplementary Figure S9.</b> Predictor importance under the Boruta-refined feature set, confirming the stability of the top predictors identified in the main analysis.</sub>
-</p>
-
-### Supplementary Figure S10: Balanced-Accuracy Comparison
-
-<p align="center">
-  <img src="Supplementary%20Figure%20S10.tiff" alt="Balanced accuracy comparison across strategies" width="620">
-  <br>
-  <sub><b>Supplementary Figure S10.</b> Balanced-accuracy comparison across imbalance-handling strategies. SMOTE consistently yields the highest balanced accuracy, indicating superior performance in identifying both skilled and unskilled birth attendance cases. See also Supplementary Figure S10(alternatives).tiff for an alternative visualization.</sub>
-</p>
-
-### Supplementary Figure S11: Predictor Ranking Stability
-
-<p align="center">
-  <img src="Supplementary%20Figure%20S11.tiff" alt="Predictor ranking stability under alternative imbalance handling" width="620">
-  <br>
-  <sub><b>Supplementary Figure S11.</b> Stability of predictor rankings across imbalance-handling strategies. The top predictors (Province, ANC visits, Age at first birth) remain consistently ranked regardless of the imbalance-handling approach, supporting the robustness of the primary findings.</sub>
-</p>
-
-### Sensitivity Analysis Outputs
-
-| File | Description |
-|---|---|
-| `rf_imbalance_comparison.csv` | Performance metrics (Accuracy, Precision, Recall, F1, MCC, Kappa, AUROC, Balanced Accuracy) for each imbalance-handling strategy |
-| `rf_imbalance_ranking.csv` | SHAP-based predictor ranking under each strategy |
-| `comparison_df.csv` | Consolidated model-comparison data frame underlying Supplementary Figure S8 |
-| `ranking_df.csv` | Consolidated ranking data frame underlying Supplementary Figures S9 and S11 |
-| `Supplementary_Table1_RF_Comparison.csv` | Machine-readable version of Supplementary Table S5 |
-| `Supplementary Table S5.docx` | Full formatted results table for manuscript inclusion |
+| Figure | Description | File |
+|---|---|---|
+| **S8** | RF performance across imbalance-handling strategies | [Supplementary Figure S8.tiff](Supplementary_Materials/Figures/Supplementary%20Figure%20S8.tiff) |
+| **S9** | Predictor importance under the Boruta-refined feature set | [Supplementary Figure S9.tiff](Supplementary_Materials/Figures/Supplementary%20Figure%20S9.tiff) |
+| **S10** | Balanced-accuracy comparison across strategies | [Supplementary Figure S10.tiff](Supplementary_Materials/Figures/Supplementary%20Figure%20S10.tiff) |
+| **S11** | Predictor-ranking stability across strategies | [Supplementary Figure S11.tiff](Supplementary_Materials/Figures/Supplementary%20Figure%20S11.tiff) |
 
 ### Key Sensitivity Findings
 
@@ -340,7 +311,7 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
 | Class Weighting | 0.87 | 0.95 | 0.90 | 0.60 | 0.26 |
 | Boruta-Refined Set | 0.88 | 0.94 | 0.92 | 0.61 | 0.28 |
 
-> 📌 **Interpretation guidance:** SMOTE provides superior balanced performance, particularly in identifying unskilled birth attendance cases (recall = 0.96), which is clinically critical for targeted interventions. The top predictor rankings remain highly stable across all strategies, confirming the robustness of the primary findings.
+> 📌 **Interpretation guidance:** The baseline model's high accuracy reflects the majority (skilled) class, as shown by its balanced accuracy of 0.50 and MCC of 0.12. SMOTE yields the highest balanced accuracy and MCC, indicating better discrimination across both classes. Top predictor rankings (Province, ANC visits, age at first birth) remain stable across all strategies (Supplementary Figure S11). Full results are in Supplementary Table S5 (`Revision_01/Revision_02/`) and in the final Supplementary Information file.
 
 ---
 
@@ -376,16 +347,16 @@ install.packages(c(
 ### Stata (≥ 17)
 
 ```stata
-* Required for sensitivity analysis (.do files)
+* Required for table export in the .do files
 ssc install estout
-ssc install svyset   // built-in, ensure updated ado files
+* svyset / svy: are built into Stata; no installation needed
 ```
 
 ---
 
 ## ♻️ Reproducibility Steps
 
-> Follow these steps in order to fully reproduce all results, figures, and tables reported in the manuscript, including the imbalance-handling sensitivity analysis.
+> Follow these steps in order. Set the working directory to the repository root before running any script, and adjust file paths inside the scripts if your local layout differs.
 
 **Step 1 — Obtain data**
 ```
@@ -393,46 +364,55 @@ ssc install svyset   // built-in, ensure updated ado files
 2. Request access to: Burkina Faso DHS 2021 — Individual Recode (IR) dataset
 3. Download the Stata-format file (.dta)
 ```
+*(To skip data management, the cleaned analytic file is provided at `Data_materials/DataDHS_cleaned_descriptive.dta`.)*
 
 **Step 2 — Data management (Stata)**
 ```stata
-* Open Stata 17, set working directory, then run:
-do "Salek_data manegments_SBA.do"
+do "Coding_Materials/Stata/Salek_data manegments_SBA.do"
 * Output: DataDHS_cleaned_descriptive.dta
 ```
 
 **Step 3 — Main ML analysis (R)**
 ```r
-# Set working directory to repository root, then run:
-source("Salek_ML(BF)_SBA.R")
-# Produces: all main figures, Table 1, SHAP plots, spatial maps
+source("Coding_Materials/R_Studio/Salek_ML(BF)_SBA.R")
+# Produces: main figures, SHAP plots, spatial maps, model performance results
 ```
 
 **Step 4 — Supplementary figures (R)**
 ```r
-source("Correltaion Heatmaps.R")        # → Supplementary Figure S7
-source("Precision _recall curve.R")     # → Supplementary Figure S5
+source("Coding_Materials/R_Studio/Correltaion Heatmaps.R")      # → Supplementary Figure S7
+source("Coding_Materials/R_Studio/Precision _recall curve.R")   # → Supplementary Figure S5
 ```
 
-**Step 5 — Sensitivity analysis: survey-weighted logistic regression (Stata)**
+**Step 5 — Survey-weighted logistic regression & tables (Stata)**
 ```stata
-do "Svy_LR(Sensistivity).do"
-* Output: Supplementary Table S4 (survey-weighted LR results)
+do "Coding_Materials/Stata/Svy_LR(Sensistivity).do"   // → Supplementary Table S4
+do "Coding_Materials/Stata/Table.do"                  // → table outputs
 ```
 
 **Step 6 — Sensitivity analysis: imbalance-handling strategies (R)**
 ```r
-source("SBA_ML_Sensitivity_Analysis.R")
-# Produces: Supplementary Figures S8–S11, Supplementary Table S5,
-#           comparison_df.csv, ranking_df.csv,
-#           rf_imbalance_comparison.csv, rf_imbalance_ranking.csv,
-#           Supplementary_Table1_RF_Comparison.csv
+source("Coding_Materials/R_Studio/SBA_ML_Sensitivity_Analysis.R")
+# Produces: Supplementary Figures S8–S11 and Supplementary Table S5 results
 ```
 
 **Step 7 — Alternative model training (optional)**
 ```r
-source("Salek_ML_without_Some_Model_train.R")   # Subset model comparison
+source("Coding_Materials/R_Studio/Salek_ML_without_Some_Model_train.R")   # Subset model comparison
 ```
+
+---
+
+## 📬 Peer-Review & Revision History
+
+This repository also archives the manuscript revision process for transparency:
+
+| Folder | Contents |
+|---|---|
+| `Revision_01/` | First-round revision: cover letter, editor and reviewer comments, point-by-point response, clean and tracked manuscripts, supplementary figures and tables |
+| `Revision_01/Revision_02/` | Second-round revision: reviewer comments, response letters, clean and tracked manuscripts, Figures 2–7, additional Supplementary Figures S8–S11, Supplementary Table S5, TRIPOD checklist |
+| `Revision_01/Revision_02/Revision_03/` | Third-round revision: reviewer comments, response letters, manuscript V3 (clean and tracked) |
+| `.../Revision_03/final_versions/` | Final response letter and Supplementary Information (DOCX and PDF) |
 
 ---
 
