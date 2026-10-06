@@ -1,4 +1,4 @@
-# 🏥 SBA-BurkinaFaso-ML-DHS
+#  SBA-BurkinaFaso-ML-DHS
 
 <div align="center">
 
@@ -15,7 +15,7 @@
 
 <br/>
 
-> ### 📄 *"Machine Learning Analysis of Factors Influencing Skilled Birth Attendance in Burkina Faso: Assessing Spatial Inequalities Using Imbalanced Survey Data"*
+> ###  *"Machine Learning Analysis of Factors Influencing Skilled Birth Attendance in Burkina Faso: Assessing Spatial Inequalities Using Imbalanced Survey Data"*
 >
 > **Published in *Scientific Reports*** · [https://doi.org/10.1038/s41598-026-72356-7](https://doi.org/10.1038/s41598-026-72356-7)
 >
@@ -29,13 +29,13 @@
 
 ---
 
-## 💾 Code Availability
+##  Code Availability
 
 > The analytical scripts and reproducible workflow are publicly available through GitHub and archived in Zenodo ([https://doi.org/10.5281/zenodo.22712479](https://doi.org/10.5281/zenodo.22712479)).
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 
 - [Code Availability](#-code-availability)
 - [Project Overview](#-project-overview)
@@ -54,22 +54,22 @@
 
 ---
 
-## 🌟 Project Overview
+##  Project Overview
 
 This repository contains the complete analytical codebase, supplementary materials, and reproducibility artifacts accompanying the article published in [*Scientific Reports*](https://doi.org/10.1038/s41598-026-72356-7). The study implements an **interpretable machine learning (ML) framework** applied to a nationally representative household survey to:
 
-- 🎯 **Identify and rank key predictors** of Skilled Birth Attendance (SBA) using five supervised ML algorithms
-- 🧠 **Explain model predictions** using SHapley Additive exPlanations (**SHAP**) for global and local interpretability
-- 🗺️ **Map province-level spatial inequalities** in predicted SBA probabilities across Burkina Faso
-- 🏘️ **Quantify urban–rural disparities** to inform context-specific maternal health interventions
-- ⚖️ **Address class imbalance** using SMOTE, with a dedicated **sensitivity analysis** benchmarking alternative strategies (class weighting, Boruta-refined feature sets, and balanced-accuracy optimization) to test the robustness of the primary findings
-- 📐 **Evaluate clinical utility** via Decision Curve Analysis (DCA) across Random Forest, Logistic Regression, and Support Vector Machine models
+-  **Identify and rank key predictors** of Skilled Birth Attendance (SBA) using five supervised ML algorithms
+-  **Explain model predictions** using SHapley Additive exPlanations (**SHAP**) for global and local interpretability
+-  **Map province-level spatial inequalities** in predicted SBA probabilities across Burkina Faso
+-  **Quantify urban–rural disparities** to inform context-specific maternal health interventions
+-  **Address class imbalance** using SMOTE, with a dedicated **sensitivity analysis** benchmarking alternative strategies (class weighting, Boruta-refined feature sets, and balanced-accuracy optimization) to test the robustness of the primary findings
+-  **Evaluate clinical utility** via Decision Curve Analysis (DCA) across Random Forest, Logistic Regression, and Support Vector Machine models
 
-> ⚠️ **Conceptual note.** This study adopts a **predictive modeling framework**, not a causal-inference framework. All variables identified as important predictors should be interpreted as statistically associated with the outcome, not as causal determinants of skilled birth attendance.
+>  **Conceptual note.** This study adopts a **predictive modeling framework**, not a causal-inference framework. All variables identified as important predictors should be interpreted as statistically associated with the outcome, not as causal determinants of skilled birth attendance.
 
 ---
 
-## 🏗️ Study Design & Data Source
+##  Study Design & Data Source
 
 | Attribute | Details |
 |---|---|
@@ -80,7 +80,7 @@ This repository contains the complete analytical codebase, supplementary materia
 | **Outcome variable** | Skilled Birth Attendance (SBA) — binary: skilled vs. unskilled |
 | **Data access** | [dhsprogram.com](https://dhsprogram.com) *(registration required)* |
 
-> ⚠️ Raw DHS microdata are **not redistributed** in this repository, in compliance with the DHS Program's data use agreement. Access must be requested directly from the [DHS Program](https://dhsprogram.com/data/dataset_admin/login_main.cfm). Only a cleaned file containing derived analytic variables is provided in [`Data_materials/`](Data_materials).
+>  Raw DHS microdata are **not redistributed** in this repository, in compliance with the DHS Program's data use agreement. Access must be requested directly from the [DHS Program](https://dhsprogram.com/data/dataset_admin/login_main.cfm). Only a cleaned file containing derived analytic variables is provided in [`Data_materials/`](Data_materials).
 
 <p align="center">
   <img src="Figure%201.png" alt="Study sample selection flowchart" width="620">
@@ -149,11 +149,11 @@ SBA-BurkinaFaso-ML-DHS/
 └── LICENSE                                       # MIT License
 ```
 
-> 📝 **Note on Supplementary Table S5** (imbalance-handling sensitivity results): it is stored in `Revision_01/Revision_02/` alongside the second-round revision materials, together with the first versions of Supplementary Figures S8–S11. The consolidated versions are in `Supplementary_Materials/Figures/` and in the final Supplementary Information file.
+>  **Note on Supplementary Table S5** (imbalance-handling sensitivity results): it is stored in `Revision_01/Revision_02/` alongside the second-round revision materials, together with the first versions of Supplementary Figures S8–S11. The consolidated versions are in `Supplementary_Materials/Figures/` and in the final Supplementary Information file.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 <div align="center">
 
@@ -171,7 +171,7 @@ SBA-BurkinaFaso-ML-DHS/
 
 ---
 
-## 🔄 Analytical Workflow
+##  Analytical Workflow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -248,19 +248,19 @@ SBA-BurkinaFaso-ML-DHS/
 
 ---
 
-## 📊 Key Findings
+##  Key Findings
 
 ### Model Performance Comparison (Primary Specification — SMOTE)
 
 | Model | Accuracy | Precision | Recall | F1-Score | MCC | Kappa | AUROC |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 🏆 **Random Forest** | **0.89** | **0.93** | **0.96** | **0.94** | **0.31** | **0.30** | **0.71** |
+|  **Random Forest** | **0.89** | **0.93** | **0.96** | **0.94** | **0.31** | **0.30** | **0.71** |
 | SVM | 0.88 | 0.93 | 0.94 | 0.93 | 0.27 | 0.27 | 0.69 |
 | Decision Tree | 0.85 | 0.92 | 0.90 | 0.91 | 0.19 | 0.19 | 0.64 |
 | KNN | 0.76 | 0.94 | 0.79 | 0.86 | 0.19 | 0.17 | 0.67 |
 | Logistic Regression | 0.71 | 0.94 | 0.72 | 0.82 | 0.19 | 0.15 | 0.69 |
 
-> 📌 Given the pronounced class imbalance (90.4% skilled vs. 9.6% unskilled), **MCC, AUROC, and F1-score** are treated as the primary evaluation metrics; accuracy alone is not informative in this setting.
+>  Given the pronounced class imbalance (90.4% skilled vs. 9.6% unskilled), **MCC, AUROC, and F1-score** are treated as the primary evaluation metrics; accuracy alone is not informative in this setting.
 
 ### Top Predictors (SHAP — Random Forest)
 
@@ -291,7 +291,7 @@ See [**Supplementary Figure S4**](Supplementary_Materials/Figures/Suppementary%2
 
 ---
 
-## 🧪 Sensitivity Analysis: Imbalance-Handling Strategies
+##  Sensitivity Analysis: Imbalance-Handling Strategies
 
 To evaluate whether the primary conclusions are an artifact of the SMOTE specification, [`SBA_ML_Sensitivity_Analysis.R`](Coding_Materials/R_Studio/SBA_ML_Sensitivity_Analysis.R) re-estimates the Random Forest model under alternative class-imbalance-handling strategies and re-assesses predictor rankings for stability. Synthetic oversampling can distort the decision boundary and inflate apparent performance, so benchmarking against non-synthetic alternatives is standard practice for imbalanced clinical and epidemiological prediction tasks.
 
@@ -304,7 +304,7 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
 
 ### Sensitivity Figures
 
-> 💡 Supplementary figures are stored as `.tiff`, which GitHub does not preview inline. Click a link to download and view the file.
+>  Supplementary figures are stored as `.tiff`, which GitHub does not preview inline. Click a link to download and view the file.
 
 | Figure | Description | File |
 |---|---|---|
@@ -322,11 +322,11 @@ To evaluate whether the primary conclusions are an artifact of the SMOTE specifi
 | Class Weighting | 0.87 | 0.95 | 0.90 | 0.60 | 0.26 |
 | Boruta-Refined Set | 0.88 | 0.94 | 0.92 | 0.61 | 0.28 |
 
-> 📌 **Interpretation guidance:** The baseline model's high accuracy reflects the majority (skilled) class, as shown by its balanced accuracy of 0.50 and MCC of 0.12. SMOTE yields the highest balanced accuracy and MCC, indicating better discrimination across both classes. Top predictor rankings (Province, ANC visits, age at first birth) remain stable across all strategies (Supplementary Figure S11). Full results are in Supplementary Table S5 (`Revision_01/Revision_02/`) and in the final Supplementary Information file.
+>  **Interpretation guidance:** The baseline model's high accuracy reflects the majority (skilled) class, as shown by its balanced accuracy of 0.50 and MCC of 0.12. SMOTE yields the highest balanced accuracy and MCC, indicating better discrimination across both classes. Top predictor rankings (Province, ANC visits, age at first birth) remain stable across all strategies (Supplementary Figure S11). Full results are in Supplementary Table S5 (`Revision_01/Revision_02/`) and in the final Supplementary Information file.
 
 ---
 
-## ⚡ Installation & Requirements
+##  Installation & Requirements
 
 ### R (≥ 4.2)
 
@@ -365,7 +365,7 @@ ssc install estout
 
 ---
 
-## ♻️ Reproducibility Steps
+##  Reproducibility Steps
 
 > Follow these steps in order. Set the working directory to the repository root before running any script, and adjust file paths inside the scripts if your local layout differs.
 
@@ -414,7 +414,7 @@ source("Coding_Materials/R_Studio/Salek_ML_without_Some_Model_train.R")   # Subs
 
 ---
 
-## 📬 Peer-Review & Revision History
+##  Peer-Review & Revision History
 
 This repository also archives the manuscript revision process for transparency:
 
@@ -427,7 +427,7 @@ This repository also archives the manuscript revision process for transparency:
 
 ---
 
-## 🔏 Ethical Statement
+##  Ethical Statement
 
 - Ethical approval for the 2021 BF-DHS was obtained from the **national ethics committees in Burkina Faso** and the **ICF International Institutional Review Board**.
 - All data are **anonymized** and publicly available through the DHS Program.
@@ -437,7 +437,7 @@ This repository also archives the manuscript revision process for transparency:
 
 ---
 
-## 📄 Citation
+##  Citation
 
 If you use this code, data pipeline, or analysis in your research, please cite the published article:
 
@@ -458,7 +458,7 @@ Code archive (Zenodo): [https://doi.org/10.5281/zenodo.22712479](https://doi.org
 
 ---
 
-## 📜 License
+##  License
 
 This project is licensed under the [MIT License](LICENSE) — see the LICENSE file for details.
 
@@ -466,7 +466,7 @@ This project is licensed under the [MIT License](LICENSE) — see the LICENSE fi
 
 <div align="center">
 
-**Made with ❤️ for open science and maternal health equity**
+**Made with love for open science and maternal health equity**
 
 [![GitHub](https://img.shields.io/badge/GitHub-muhammadsalek-181717?style=flat-square&logo=github)](https://github.com/muhammadsalek)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0005--5973--461X-A6CE39?style=flat-square&logo=orcid&logoColor=white)](https://orcid.org/0009-0005-5973-461X)
