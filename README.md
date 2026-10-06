@@ -5,7 +5,9 @@
 ![R](https://img.shields.io/badge/R-4.2+-276DC3?style=for-the-badge&logo=r&logoColor=white)
 ![Stata](https://img.shields.io/badge/Stata-17-1A5276?style=for-the-badge&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-2ECC71?style=for-the-badge&logo=opensourceinitiative&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Under_Review-F39C12?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Published-2ECC71?style=for-the-badge)
+[![Paper DOI](https://img.shields.io/badge/Paper-10.1038%2Fs41598--026--72356--7-0F6EB4?style=for-the-badge)](https://doi.org/10.1038/s41598-026-72356-7)
+[![Zenodo DOI](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.22712479-1682D4?style=for-the-badge&logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.22712479)
 ![Sensitivity Analysis](https://img.shields.io/badge/Sensitivity_Analysis-Imbalance_Handling-9B59B6?style=for-the-badge)
 ![Last Commit](https://img.shields.io/github/last-commit/muhammadsalek/SBA-BurkinaFaso-ML-DHS?style=for-the-badge&color=8E44AD)
 ![Stars](https://img.shields.io/github/stars/muhammadsalek/SBA-BurkinaFaso-ML-DHS?style=for-the-badge&color=F1C40F)
@@ -14,6 +16,8 @@
 <br/>
 
 > ### 📄 *"Machine Learning Analysis of Factors Influencing Skilled Birth Attendance in Burkina Faso: Assessing Spatial Inequalities Using Imbalanced Survey Data"*
+>
+> **Published in *Scientific Reports*** · [https://doi.org/10.1038/s41598-026-72356-7](https://doi.org/10.1038/s41598-026-72356-7)
 >
 > **Md Salek Miah** · Department of Statistics, Shahjalal University of Science and Technology, Sylhet‑3114, Bangladesh
 >
@@ -25,8 +29,15 @@
 
 ---
 
+## 💾 Code Availability
+
+> The analytical scripts and reproducible workflow are publicly available through GitHub and archived in Zenodo ([https://doi.org/10.5281/zenodo.22712479](https://doi.org/10.5281/zenodo.22712479)).
+
+---
+
 ## 📌 Table of Contents
 
+- [Code Availability](#-code-availability)
 - [Project Overview](#-project-overview)
 - [Study Design & Data Source](#-study-design--data-source)
 - [Repository Structure](#-repository-structure)
@@ -45,7 +56,7 @@
 
 ## 🌟 Project Overview
 
-This repository contains the complete analytical codebase, supplementary materials, and reproducibility artifacts accompanying the manuscript cited above. The study implements an **interpretable machine learning (ML) framework** applied to a nationally representative household survey to:
+This repository contains the complete analytical codebase, supplementary materials, and reproducibility artifacts accompanying the article published in [*Scientific Reports*](https://doi.org/10.1038/s41598-026-72356-7). The study implements an **interpretable machine learning (ML) framework** applied to a nationally representative household survey to:
 
 - 🎯 **Identify and rank key predictors** of Skilled Birth Attendance (SBA) using five supervised ML algorithms
 - 🧠 **Explain model predictions** using SHapley Additive exPlanations (**SHAP**) for global and local interpretability
@@ -428,21 +439,22 @@ This repository also archives the manuscript revision process for transparency:
 
 ## 📄 Citation
 
-If you use this code, data pipeline, or analysis in your research, please cite:
+If you use this code, data pipeline, or analysis in your research, please cite the published article:
 
 ```bibtex
-@article{miah2025sba,
+@article{miah2026sba,
   author  = {Miah, Md Salek},
   title   = {Machine Learning Analysis of Factors Influencing Skilled Birth Attendance
              in Burkina Faso: Assessing Spatial Inequalities Using Imbalanced Survey Data},
-  journal = {[Under Review]},
-  year    = {2025},
-  note    = {Manuscript submitted for publication; includes sensitivity analysis of
-             class-imbalance-handling strategies},
-  url     = {https://github.com/muhammadsalek/SBA-BurkinaFaso-ML-DHS},
+  journal = {Scientific Reports},
+  year    = {2026},
+  doi     = {10.1038/s41598-026-72356-7},
+  url     = {https://doi.org/10.1038/s41598-026-72356-7},
   orcid   = {0009-0005-5973-461X}
 }
 ```
+
+Code archive (Zenodo): [https://doi.org/10.5281/zenodo.22712479](https://doi.org/10.5281/zenodo.22712479)
 
 ---
 
