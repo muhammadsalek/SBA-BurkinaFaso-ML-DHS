@@ -1,0 +1,4 @@
+"Model","Accuracy","Sensitivity","Specificity","Precision","F1","MCC","AUROC","Brier_Score"
+"SMOTE + RF","89.5%","96.1%","26.8%","92.6%",0.943,0.281,0.716,0.091
+"Class-weighted RF","67%","68.4%","53.6%","93.3%",0.789,0.136,0.663,0.222
+"Balanced RF","77%","79.7%","51.5%","94%",0.862,0.216,0.703,0.178

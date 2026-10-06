@@ -1,0 +1,6 @@
+"Model","Accuracy","Precision","Recall","F1_Score","MCC","Kappa","AUROC"
+"Random Forest",0.91,0.92,0.99,0.95,0.32,0.26,0.7
+"Decision Tree",0.91,0.92,0.98,0.95,0.3,0.27,0.67
+"K-Nearest Neighbor",0.91,0.92,0.99,0.95,0.32,0.25,0.72
+"Logistic Regression",0.91,0.92,0.99,0.95,0.27,0.22,0.7
+"Support Vector Machine",0.91,0.92,0.99,0.95,0.3,0.22,0.66
